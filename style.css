@@ -1,7 +1,17 @@
+html, body {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #000000; /* Black background */
     color: #ffffff; /* White text */
     font-family: sans-serif;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+}
+
+section {
+    scroll-snap-align: start;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -22,6 +32,7 @@ header {
     padding: 10px 20px;
     top: 0;
     position: sticky;
+    background-color: #080808;
 }
 
 .header img {
@@ -70,7 +81,6 @@ a:hover {
 }
 
 footer {
-    position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
@@ -140,12 +150,15 @@ li a:hover .icon {
 }
 
 .footerBottom p a {
-    color: #ccc;
     text-decoration: none;
     font-weight: bold;
     font-size: 15px;
-    /* glow */
-    color:white;
+    
+}
+
+
+.blink {
+    color: #ccc;
     animation-name: glow;
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
@@ -153,34 +166,88 @@ li a:hover .icon {
 }
 
 @keyframes glow{
-    from{text-shadow:0px 0px 5px #fff,0px 0px 5px #c0c0c0;}
+    from{text-shadow:0px 0px 5px #fff,0px 0px 10px #c0c0c0;}
     to{text-shadow:0px 0px 15px #fff,0px 0px 20px #c0c0c0;}
 }
 
 
-
-input[type="text"], input[type="email"], textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
 }
 
-input[type="submit"] {
-    background-color: #008CBA; /* Blue background */
-    color: white; /* White text */
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.hole {
+    width: 50vmin;
+    height: 50vmin;
+    background: black;
+    border-radius: 50%;
+    outline: 1px solid white;
+    animation: pulse 6s infinite ease-in-out;
 }
 
-input[type="submit"]:hover {
-    background-color: #007bb5; /* Darker blue on hover */
+@keyframes pulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.05);}
+}
+
+.scroll-section {
+  height: 200vh;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.big {
+  width: 65vmin;
+  height: 65vmin;
+}
+
+.mission {
+  max-width: 700px;
+  margin: 10rem auto;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 3rem;
+}
+
+.effects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding: 0 8vw;
+}
+
+.effect {
+  border: 1px solid white;
+  border-radius: 16px;
+  padding: 2rem;
+  transition: background 0.4s, color 0.4s;
+}
+
+.effect:hover {
+  background: white;
+  color: black;
+}
+
+.end {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(2rem, 5vw, 4rem);
+  text-align: center;
+  opacity: 0.8;
 }
 
 
